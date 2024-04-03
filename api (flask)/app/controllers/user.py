@@ -33,7 +33,8 @@ def register():
     )
 
     data = {
-        "message": "Success create new account",
+        "username": username,
+        "statusMessage": "Success create new account",
         "token": token,
     }
 
@@ -65,7 +66,8 @@ def login():
     )
 
     data = {
-        "message": "Login Successful",
+        "username": username,
+        "statusMessage": "Login Successful",
         "token": token,
     }
 
