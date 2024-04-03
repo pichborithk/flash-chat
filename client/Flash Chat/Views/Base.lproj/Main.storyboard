@@ -28,7 +28,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="yf6-27-je8" kind="show" id="rx8-XA-Ban"/>
+                                    <segue destination="yf6-27-je8" kind="show" identifier="WelcomeToLogin" id="rx8-XA-Ban"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⚡️FlashChat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lx0-3f-QYF" customClass="CLTypingLabel" customModule="CLTypingLabel">
@@ -52,7 +52,7 @@
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ljR-KA-lGb" kind="show" id="5eh-co-nGV"/>
+                                    <segue destination="ljR-KA-lGb" kind="show" identifier="WelcomeToRegister" id="5eh-co-nGV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -166,8 +166,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="2ON-Gl-CAK"/>
                     <connections>
-                        <outlet property="passwordTextfield" destination="4Sl-wy-dhQ" id="FJT-z5-Q2e"/>
-                        <outlet property="usernameTextfield" destination="9s3-f3-BzJ" id="3hp-7h-0cO"/>
+                        <outlet property="passwordTextField" destination="4Sl-wy-dhQ" id="FJT-z5-Q2e"/>
+                        <outlet property="usernameTextField" destination="9s3-f3-BzJ" id="3hp-7h-0cO"/>
                         <segue destination="T2y-lO-QkL" kind="show" identifier="RegisterToChat" id="y3m-b9-1PC"/>
                     </connections>
                 </viewController>
@@ -261,7 +261,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="VtR-uL-wKO"/>
                     <connections>
-                        <outlet property="passwordTextfield" destination="V8i-b4-GUz" id="4Ln-BW-MDb"/>
+                        <outlet property="passwordTextField" destination="V8i-b4-GUz" id="4Ln-BW-MDb"/>
                         <outlet property="usernameTextField" destination="ckq-sn-JCq" id="htj-am-QIl"/>
                         <segue destination="T2y-lO-QkL" kind="show" identifier="LoginToChat" id="Y6w-Tx-P5C"/>
                     </connections>

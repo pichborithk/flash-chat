@@ -9,29 +9,41 @@ import UIKit
 
 class RegisterViewController: UIViewController {
     
-    @IBOutlet weak var usernameTextfield: UITextField!
-    @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    var userLoader = UserLoader()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        userLoader.delegate = self
     }
     
 
     @IBAction func registerPressed(_ sender: UIButton) {
-        //        if let email = emailTextfield.text,
-        //           let password = passwordTextfield.text {
-        //            Auth.auth().createUser(withEmail: email, password: password) {
-        //                _, error in
-        //                if let e = error {
-        //                    print(e.localizedDescription)
-        //                } else {
-        //
-        //                }
-        //            }
-        //        }
-        self.performSegue(withIdentifier: K.registerSegue, sender: self)
+        if let username = usernameTextField.text,
+           let password = passwordTextField.text {
+            userLoader.registerUser(username: username, password: password)
+        }
     }
 
+}
+
+// MARK: - UserLoaderDelegate
+
+extension RegisterViewController : UserLoaderDelegate {
+    
+    func didUpdateUser(user: User) {
+        DispatchQueue.main.async {
+            UserDefaults.standard.setValue(user.username, forKey: "username")
+            self.performSegue(withIdentifier: K.Segue.RegisterToChat, sender: self)
+        }
+        
+    }
+    
+    func didFailWithError(error: any Error) {
+        print(error.localizedDescription)
+    }
+    
 }

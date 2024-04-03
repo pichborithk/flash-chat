@@ -10,13 +10,17 @@ import Foundation
 struct K {
     static let appName = "⚡️FlashChat"
     
-    static let registerSegue = "RegisterToChat"
-    static let loginSegue = "LoginToChat"
-    
     static let cellIdentifier = "ReusableCell"
     static let cellNibName = "MessageCell"
     
     static let endpoint = "http://localhost:1337/api/"
+    
+    struct Segue {
+        static let WelcomeToLogin = "WelcomeToLogin"
+        static let WelcomeToRegister = "WelcomeToRegister"
+        static let RegisterToChat = "RegisterToChat"
+        static let LoginToChat = "LoginToChat"
+    }
     
     struct BrandColors {
         static let purple = "BrandPurple"

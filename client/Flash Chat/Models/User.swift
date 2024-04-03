@@ -36,19 +36,33 @@ struct UserLoader {
     
     var delegate: UserLoaderDelegate?
     
-    static func registerUser() async throws -> User? {
-        guard let url = URL(string: "http://localhost:1337/api/users/register") else { return nil }
-        let (data, response) = try await URLSession.shared.data(from: url)
+    func registerUser(username: String, password: String) {
+        guard let url = URL(string: K.endpoint + "users/register") else { return }
+        let body = UserRequest(username: username, password: password)
+        let request = createRequest(url: url, method: "POST", body: body)
         
-        let user = try JSONDecoder().decode(User.self, from: data)
-        
-        return user
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            guard let safeData = data, error == nil else {
+                self.delegate?.didFailWithError(error: error!)
+                return
+            }
+           
+            guard let responseData = self.parseJSON(safeData) else { return }
+            
+            if let user = responseData.data {
+                self.delegate?.didUpdateUser(user: user)
+            } else {
+                print(responseData.error!.message)
+            }
+            
+            
+        }.resume()
     }
     
     func loginUser(username: String, password: String) {
         guard let url = URL(string: K.endpoint + "users/login") else { return }
         let body = UserRequest(username: username, password: password)
-        var request = createRequest(url: url, method: "POST", body: body)
+        let request = createRequest(url: url, method: "POST", body: body)
         
         URLSession.shared.dataTask(with: request) { data, _, error in
             guard let safeData = data, error == nil else {

@@ -10,6 +10,7 @@ import UIKit
 class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ class WelcomeViewController: UIViewController {
             
             charIndex += 1
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +44,16 @@ class WelcomeViewController: UIViewController {
     
     //    override func viewDidDisappear(_ animated: Bool) {}
 
-
+    // MARK: - Navigation
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        switch segue.identifier {
+//        case K.Segue.WelcomeToLogin:
+//            let destinationVC = segue.destination as! LoginViewController
+//            destinationVC.userLoader = userLoader
+//        default:
+//            print("No object/value pass")
+//        }
+//    }
 }
 
