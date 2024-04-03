@@ -10,10 +10,9 @@ class Message(db.Model):
     sender_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     sender = relationship("User", back_populates="messages")
 
-    def __init__(self, text, sender_id, room_id):
+    def __init__(self, text, sender_id):
         self.text = text
         self.sender_id = sender_id
-        self.room_id = room_id
 
     def save(self):
         db.session.add(self)
