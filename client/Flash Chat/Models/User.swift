@@ -39,7 +39,7 @@ struct UserLoader {
     func registerUser(username: String, password: String) {
         guard let url = URL(string: K.endpoint + "users/register") else { return }
         let body = UserRequest(username: username, password: password)
-        let request = createRequest(url: url, method: "POST", body: body)
+        let request = createRequest(url: url, body: body)
         
         URLSession.shared.dataTask(with: request) { data, _, error in
             guard let safeData = data, error == nil else {
@@ -62,7 +62,7 @@ struct UserLoader {
     func loginUser(username: String, password: String) {
         guard let url = URL(string: K.endpoint + "users/login") else { return }
         let body = UserRequest(username: username, password: password)
-        let request = createRequest(url: url, method: "POST", body: body)
+        let request = createRequest(url: url, body: body)
         
         URLSession.shared.dataTask(with: request) { data, _, error in
             guard let safeData = data, error == nil else {
@@ -83,9 +83,9 @@ struct UserLoader {
 
     }
     
-    private func createRequest(url: URL, method: String, body: Encodable) -> URLRequest {
+    private func createRequest(url: URL, body: Encodable) -> URLRequest {
         var request = URLRequest(url: url)
-        request.httpMethod = method
+        request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONEncoder().encode(body)

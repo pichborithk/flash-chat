@@ -37,6 +37,7 @@ extension RegisterViewController : UserLoaderDelegate {
     func didUpdateUser(user: User) {
         DispatchQueue.main.async {
             UserDefaults.standard.setValue(user.username, forKey: "username")
+            UserDefaults.standard.setValue(user.token, forKey: "token")
             self.performSegue(withIdentifier: K.Segue.RegisterToChat, sender: self)
         }
         

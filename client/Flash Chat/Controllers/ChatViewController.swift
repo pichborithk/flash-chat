@@ -12,10 +12,9 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextfield: UITextField!
     
-    var messages: [Message] = [
-        Message(sender: "1@2.com", body: "Hey!"),
-        Message(sender: "2@2.com", body: "Hello")
-    ]
+    var messages: [Message] = []
+    
+    let messageLoader = MessageLoader()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,24 +63,13 @@ class ChatViewController: UIViewController {
     }
     
     @IBAction func sendPressed(_ sender: UIButton) {
-        //        if let messageBody = messageTextfield.text,
-        //           let messageSender = Auth.auth().currentUser?.email {
-        //            db.collection(Constants.FStore.collectionName)
-        //                .addDocument(data: [
-        //                    Constants.FStore.senderField: messageSender,
-        //                    Constants.FStore.bodyField: messageBody,
-        //                    Constants.FStore.dateField: Date().timeIntervalSince1970]) {
-        //                        error in
-        //                        if let e = error {
-        //                            print("There was an issue saving data to firestore, \(e)")
-        //                        } else {
-        //                            print("Successfully saved data.")
-        //                            DispatchQueue.main.async {
-        //                                self.messageTextfield.text = ""
-        //                            }
-        //                        }
-        //                    }
-        //        }
+        if let text = messageTextfield.text,
+           let token = UserDefaults.standard.string(forKey: "token") {
+            messageLoader.postMesssage(text: text, token: token)
+            DispatchQueue.main.async {
+                self.messageTextfield.text = ""
+            }
+        }
     }
     
     @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
@@ -105,7 +93,7 @@ extension ChatViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = messages[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! MessageCell
-        cell.label.text = message.body
+        cell.label.text = message.text
         
         //        if message.sender == Auth.auth().currentUser?.email {
         //            cell.leftImageView.isHidden = true
