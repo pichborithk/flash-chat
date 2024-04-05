@@ -41,7 +41,7 @@ struct MessageManager {
     var delegate: MessageManagerDelegete?
     
     func getMessages(token: String) {
-        guard let url = URL(string: K.endpoint + "messages") else { return }
+        guard let url = URL(string: K.endpoint + "/api/messages") else { return }
         var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
@@ -64,7 +64,7 @@ struct MessageManager {
     }
     
     func postMesssage(text: String, token: String) {
-        guard let url = URL(string: K.endpoint + "messages") else { return }
+        guard let url = URL(string: K.endpoint + "/api/messages") else { return }
         let body = MessageRequest(text: text)
         let request = createRequest(url: url, token: token, body: body)
         

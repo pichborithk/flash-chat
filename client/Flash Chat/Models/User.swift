@@ -37,7 +37,7 @@ struct UserManager {
     var delegate: UserLoaderDelegate?
     
     func registerUser(username: String, password: String) {
-        guard let url = URL(string: K.endpoint + "users/register") else { return }
+        guard let url = URL(string: K.endpoint + "/api/users/register") else { return }
         let body = UserRequest(username: username, password: password)
         let request = createRequest(url: url, body: body)
         
@@ -60,7 +60,7 @@ struct UserManager {
     }
     
     func loginUser(username: String, password: String) {
-        guard let url = URL(string: K.endpoint + "users/login") else { return }
+        guard let url = URL(string: K.endpoint + "/api/users/login") else { return }
         let body = UserRequest(username: username, password: password)
         let request = createRequest(url: url, body: body)
         
