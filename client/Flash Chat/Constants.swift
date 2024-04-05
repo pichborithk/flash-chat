@@ -15,7 +15,7 @@ struct K {
     
     //    static let endpoint = "http://localhost:1337/api/"
     //    using IP instead of localhost to remove warning
-    static let endpoint = "http://127.0.0.1:1337/api/"
+    static let endpoint = "http://127.0.0.1:1337"
     
     struct Segue {
         static let WelcomeToLogin = "WelcomeToLogin"

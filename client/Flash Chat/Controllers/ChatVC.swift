@@ -14,6 +14,7 @@ class ChatVC: UIViewController {
     
     var messages:[Message] = []
     var messageManager = MessageManager()
+    var socketIOManagaer = SocketIOManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +26,14 @@ class ChatVC: UIViewController {
         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
         
         messageManager.delegate = self
-        
         if let token = UserDefaults.standard.string(forKey: "token") {
             self.messageManager.getMessages(token: token)
         }
+        
+        socketIOManagaer.delegate = self
+   
+        socketIOManagaer.setupSocketEvents()
+        socketIOManagaer.establishConnection()
     }
     
     func loadMessages() {
@@ -51,6 +56,7 @@ class ChatVC: UIViewController {
         navigationController?.popToRootViewController(animated: true)
         UserDefaults.standard.removeObject(forKey: "username")
         UserDefaults.standard.removeObject(forKey: "token")
+        socketIOManagaer.closeConnection()
     }
     
 }
@@ -93,6 +99,7 @@ extension ChatVC : MessageManagerDelegete {
     func didPostMessage(_ message: Message) {
         messages.append(message)
         loadMessages()
+        socketIOManagaer.emit(event: "message", data: message)
     }
     
     func didGetMessages(_ messages: [Message]) {
@@ -104,5 +111,20 @@ extension ChatVC : MessageManagerDelegete {
         print(error.localizedDescription)
     }
     
+    
+}
+
+// MARK: - SocketIOManagerDelegate
+
+extension ChatVC : SocketIOManagerDelegete {
+    
+    func didUpdateMessage(_ message: Message) {
+        print("SocketIO Managaer Delegete Trigger")
+        let username = UserDefaults.standard.string(forKey: "username")
+        if username != message.sender {
+            messages.append(message)
+            loadMessages()
+        }
+    }
     
 }
