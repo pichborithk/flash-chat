@@ -22,3 +22,10 @@ def new_message(current_user):
     }
 
     return jsonify({"data": data, "success": True, "error": None}), 201
+
+
+@app.get("/api/messages")
+@deserialize_auth
+def get_all_message(current_user):
+    messages = Message.get_all()
+    return jsonify({"data": messages, "success": True, "error": None}), 200
