@@ -7,24 +7,24 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginVC: UIViewController {
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    var userLoader = UserLoader()
+    var userManager = UserManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userLoader.delegate = self
+        userManager.delegate = self
         
     }
     
     @IBAction func loginPressed(_ sender: UIButton) {
         if let username = usernameTextField.text,
            let password = passwordTextField.text {
-            userLoader.loginUser(username: username, password: password)
+            userManager.loginUser(username: username, password: password)
         }
     }
     
@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
 
 // MARK: - UserLoaderDelegate
 
-extension LoginViewController : UserLoaderDelegate {
+extension LoginVC : UserLoaderDelegate {
     
     func didUpdateUser(user: User) {
         DispatchQueue.main.async {

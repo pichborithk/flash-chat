@@ -17,6 +17,12 @@ struct MessageResponse : Decodable {
     let error : ErrorResponse?
 }
 
+struct MessagesResponse : Decodable {
+    let success: Bool
+    let data: [Message]?
+    let error : ErrorResponse?
+}
+
 struct Message : Decodable {
     let id: Int
     let sender: String
@@ -24,7 +30,38 @@ struct Message : Decodable {
     
 }
 
-struct MessageLoader {
+protocol MessageManagerDelegete {
+    func didPostMessage(_ message: Message)
+    func didGetMessages(_ messages: [Message])
+    func didFailWithError(_ error: Error)
+}
+
+struct MessageManager {
+    
+    var delegate: MessageManagerDelegete?
+    
+    func getMessages(token: String) {
+        guard let url = URL(string: K.endpoint + "messages") else { return }
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            guard let safeData = data, error == nil else {
+                self.delegate?.didFailWithError(error!)
+                return
+            }
+            
+            guard let responseData: MessagesResponse = self.parseJSON(safeData) else { return }
+            
+            if let messages = responseData.data {
+                self.delegate?.didGetMessages(messages)
+            } else {
+                self.delegate?.didFailWithError(error!)
+            }
+            
+            
+        }.resume()
+    }
     
     func postMesssage(text: String, token: String) {
         guard let url = URL(string: K.endpoint + "messages") else { return }
@@ -33,24 +70,22 @@ struct MessageLoader {
         
         URLSession.shared.dataTask(with: request) { data, _, error in
             guard let safeData = data, error == nil else {
-                //                self.delegate?.didFailWithError(error: error!)
-                print(error!.localizedDescription)
+                self.delegate?.didFailWithError(error!)
                 return
             }
             
-            guard let responseData = self.parseJSON(safeData) else { return }
+            guard let responseData: MessageResponse = self.parseJSON(safeData) else { return }
             
             if let message = responseData.data {
-                //                self.delegate?.didUpdateUser(user: user)
-                print(message.sender)
-                print(message.text)
+                self.delegate?.didPostMessage(message)
             } else {
-                print(responseData.error!.message)
+                self.delegate?.didFailWithError(error!)
             }
             
             
         }.resume()
     }
+    
     
     private func createRequest(url: URL, token: String, body: Encodable) -> URLRequest {
         var request = URLRequest(url: url)
@@ -60,20 +95,18 @@ struct MessageLoader {
         do {
             request.httpBody = try JSONEncoder().encode(body)
         } catch {
-            //            delegate?.didFailWithError(error: error)
-            print(error.localizedDescription)
+            self.delegate?.didFailWithError(error)
         }
         
         return request
     }
     
-    private func parseJSON(_ data: Data) -> MessageResponse? {
+    private func parseJSON<T: Decodable>(_ data: Data) -> T? {
         do {
-            let responseData = try JSONDecoder().decode(MessageResponse.self, from: data)
+            let responseData = try JSONDecoder().decode(T.self, from: data)
             return responseData
         } catch {
-            //            delegate?.didFailWithError(error: error)
-            print(error.localizedDescription)
+            self.delegate?.didFailWithError(error)
             return nil
         }
     }
