@@ -1,11 +1,11 @@
 import os
-from flask import Flask, jsonify
+from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
 from sqlalchemy.ext.declarative import declarative_base
 from flask_migrate import Migrate
-from flask_socketio import SocketIO, send, emit, join_room, leave_room
+from flask_socketio import SocketIO, send
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -25,6 +25,26 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 @app.get("/ping")
 def ping():
     return jsonify({"success": True, "data": {"message": "pong"}, "error": False})
+
+
+@socketio.on("connect")
+def socket_connect():
+    print("Connected")
+
+
+@socketio.on("message")
+def message_event(data):
+    # content = {
+    #     "id": data["message"]["id"],
+    #     "text": data["message"]["text"],
+    #     "sender": data["message"]["sender"],
+    # }
+    print(data)
+    # room_code = data["room"]
+    # emit("message", content, broadcast=True)
+    send(data, broadcast=True)  # send to all connected client
+    # send(content, to=room_code)
+    # print(f"{data['message']['sender']} said: {data['message']['text']}")
 
 
 from app.controllers import *
