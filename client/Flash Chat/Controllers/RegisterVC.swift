@@ -7,24 +7,24 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterVC: UIViewController {
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    var userLoader = UserLoader()
+    var userManager = UserManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        userLoader.delegate = self
+        userManager.delegate = self
     }
     
 
     @IBAction func registerPressed(_ sender: UIButton) {
         if let username = usernameTextField.text,
            let password = passwordTextField.text {
-            userLoader.registerUser(username: username, password: password)
+            userManager.registerUser(username: username, password: password)
         }
     }
 
@@ -32,7 +32,7 @@ class RegisterViewController: UIViewController {
 
 // MARK: - UserLoaderDelegate
 
-extension RegisterViewController : UserLoaderDelegate {
+extension RegisterVC : UserLoaderDelegate {
     
     func didUpdateUser(user: User) {
         DispatchQueue.main.async {

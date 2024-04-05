@@ -32,7 +32,7 @@ protocol UserLoaderDelegate {
 }
 
 
-struct UserLoader {
+struct UserManager {
     
     var delegate: UserLoaderDelegate?
     

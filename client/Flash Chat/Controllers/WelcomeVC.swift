@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController {
+class WelcomeVC: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     

@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		7E2602662BBBF4A800A5CA7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2602652BBBF4A800A5CA7C /* AppDelegate.swift */; };
 		7E2602682BBBF4A800A5CA7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2602672BBBF4A800A5CA7C /* SceneDelegate.swift */; };
-		7E26026A2BBBF4A800A5CA7C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2602692BBBF4A800A5CA7C /* WelcomeViewController.swift */; };
+		7E26026A2BBBF4A800A5CA7C /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2602692BBBF4A800A5CA7C /* WelcomeVC.swift */; };
 		7E26026D2BBBF4A800A5CA7C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7E26026C2BBBF4A800A5CA7C /* Base */; };
 		7E26026F2BBBF4A900A5CA7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E26026E2BBBF4A900A5CA7C /* Assets.xcassets */; };
 		7E2602722BBBF4A900A5CA7C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7E2602712BBBF4A900A5CA7C /* Base */; };
 		7E26027F2BBBF6C000A5CA7C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E26027E2BBBF6C000A5CA7C /* Constants.swift */; };
-		7E2602812BBBFBD500A5CA7C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2602802BBBFBD500A5CA7C /* RegisterViewController.swift */; };
-		7E2602832BBBFBE300A5CA7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2602822BBBFBE300A5CA7C /* LoginViewController.swift */; };
-		7E2602852BBBFBED00A5CA7C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2602842BBBFBED00A5CA7C /* ChatViewController.swift */; };
+		7E2602812BBBFBD500A5CA7C /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2602802BBBFBD500A5CA7C /* RegisterVC.swift */; };
+		7E2602832BBBFBE300A5CA7C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2602822BBBFBE300A5CA7C /* LoginVC.swift */; };
+		7E2602852BBBFBED00A5CA7C /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2602842BBBFBED00A5CA7C /* ChatVC.swift */; };
 		7E2602882BBBFC4400A5CA7C /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E2602872BBBFC4400A5CA7C /* MessageCell.xib */; };
 		7E2602892BBBFC4400A5CA7C /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2602862BBBFC4400A5CA7C /* MessageCell.swift */; };
 		7E26028B2BBBFD3800A5CA7C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E26028A2BBBFD3800A5CA7C /* Message.swift */; };
@@ -28,15 +28,15 @@
 		7E2602622BBBF4A800A5CA7C /* Flash Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flash Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E2602652BBBF4A800A5CA7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E2602672BBBF4A800A5CA7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7E2602692BBBF4A800A5CA7C /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		7E2602692BBBF4A800A5CA7C /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		7E26026C2BBBF4A800A5CA7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E26026E2BBBF4A900A5CA7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E2602712BBBF4A900A5CA7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E2602732BBBF4A900A5CA7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E26027E2BBBF6C000A5CA7C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		7E2602802BBBFBD500A5CA7C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		7E2602822BBBFBE300A5CA7C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		7E2602842BBBFBED00A5CA7C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		7E2602802BBBFBD500A5CA7C /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		7E2602822BBBFBE300A5CA7C /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		7E2602842BBBFBED00A5CA7C /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		7E2602862BBBFC4400A5CA7C /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		7E2602872BBBFC4400A5CA7C /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		7E26028A2BBBFD3800A5CA7C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -110,10 +110,10 @@
 		7E26027B2BBBF51400A5CA7C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7E2602692BBBF4A800A5CA7C /* WelcomeViewController.swift */,
-				7E2602802BBBFBD500A5CA7C /* RegisterViewController.swift */,
-				7E2602822BBBFBE300A5CA7C /* LoginViewController.swift */,
-				7E2602842BBBFBED00A5CA7C /* ChatViewController.swift */,
+				7E2602692BBBF4A800A5CA7C /* WelcomeVC.swift */,
+				7E2602802BBBFBD500A5CA7C /* RegisterVC.swift */,
+				7E2602822BBBFBE300A5CA7C /* LoginVC.swift */,
+				7E2602842BBBFBED00A5CA7C /* ChatVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -190,13 +190,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E2602832BBBFBE300A5CA7C /* LoginViewController.swift in Sources */,
+				7E2602832BBBFBE300A5CA7C /* LoginVC.swift in Sources */,
 				7E2602892BBBFC4400A5CA7C /* MessageCell.swift in Sources */,
-				7E26026A2BBBF4A800A5CA7C /* WelcomeViewController.swift in Sources */,
+				7E26026A2BBBF4A800A5CA7C /* WelcomeVC.swift in Sources */,
 				7E6536EE2BBCBB15009C5750 /* ErrorResponse.swift in Sources */,
 				7E26028B2BBBFD3800A5CA7C /* Message.swift in Sources */,
-				7E2602812BBBFBD500A5CA7C /* RegisterViewController.swift in Sources */,
-				7E2602852BBBFBED00A5CA7C /* ChatViewController.swift in Sources */,
+				7E2602812BBBFBD500A5CA7C /* RegisterVC.swift in Sources */,
+				7E2602852BBBFBED00A5CA7C /* ChatVC.swift in Sources */,
 				7E2602662BBBF4A800A5CA7C /* AppDelegate.swift in Sources */,
 				7E2602682BBBF4A800A5CA7C /* SceneDelegate.swift in Sources */,
 				7E6536EC2BBCAE8D009C5750 /* User.swift in Sources */,
