@@ -25,10 +25,8 @@ struct K {
     }
     
     struct BrandColors {
-        static let purple = "BrandPurple"
-        static let lightPurple = "BrandLightPurple"
-        static let blue = "BrandBlue"
-        static let lighBlue = "BrandLightBlue"
+        static let yellow500 = "BrandYellow500"
+        static let yellow50 = "BrandYellow50"
     }
     
 }
