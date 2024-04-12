@@ -80,13 +80,13 @@ extension ChatVC : UITableViewDataSource {
         if message.sender == username {
             cell.leftImageView.isHidden = true
             cell.rightImageView.isHidden = false
-            cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.lightPurple)
-            cell.label.textColor = UIColor(named: K.BrandColors.purple)
+            cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.yellow50)
+            cell.label.textColor = UIColor(named: K.BrandColors.yellow500)
         } else {
             cell.leftImageView.isHidden = false
             cell.rightImageView.isHidden = true
-            cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.purple)
-            cell.label.textColor = UIColor(named: K.BrandColors.lightPurple)
+            cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.yellow500)
+            cell.label.textColor = UIColor(named: K.BrandColors.yellow50)
         }
         
         return cell
